@@ -1,0 +1,113 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class verificarSiMatrixOrdenadaAscendentemente {
+
+	public static void main(String[] args) {
+		
+		lecturaYCreacionDeMatrix();
+		//creacionDeMatrix();
+		
+		//revisionDeMatrix();
+		
+		
+	}
+
+
+
+	public static void lecturaYCreacionDeMatrix() {
+		
+		int rows = 0;
+		int columns = 0;
+		
+		
+		Scanner in = new Scanner(System.in);
+		
+			System.out.print("Number of Rows: ");
+			rows = in.nextInt();
+			
+			System.out.print("Number of Columns: ");
+			columns = in.nextInt();
+			
+			
+			int matrix [] [] = new int [rows] [columns];
+
+			//Creacion de la Matrix
+			for (int i = 0; i < rows; i++) {
+				
+				for (int j = 0; j < columns; j++) {
+					
+					matrix [i] [j] =numRandom(); 
+					
+				}
+				
+			}
+			
+			//Impresion de la Matrix
+			for (int i = 0; i < rows; i++) {
+				
+				for (int j = 0; j < columns; j++) {
+					
+					System.out.print(" [" + matrix [i] [j] + "]\t"); 
+					
+				}
+				System.out.println();
+			}
+			
+			//verificar si esta ordenada ascendentemente
+			
+			System.out.println(isSorted(matrix));
+			
+			
+	}
+
+
+
+	private static int numRandom() {
+		
+		Random rnd = new Random();
+		
+		int numRnd = rnd.nextInt(99)+1;
+		
+		return numRnd;
+
+	}
+	
+	
+	public static boolean isSorted(int[][] arr) {
+
+        boolean isSorted = true;
+        
+        
+        while (isSorted) {
+			
+		
+        for (int i = 0; i < arr.length-1; i++) {
+        	
+        	int j = 0;
+        	
+        	for (j = 0; j < arr[0].length-1; j++) {
+			
+        		if(arr [i][j] > arr [i][j+1]) {
+        			
+        			isSorted = false;
+        		}
+        	
+        	}
+        	
+        	if (arr[i][j] > arr [i+1][0]) {
+				
+        		isSorted = false;
+			}
+        
+        }
+        
+       }
+        return isSorted;
+    }
+	
+	
+	
+	
+
+}
